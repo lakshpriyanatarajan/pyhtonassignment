@@ -1,0 +1,61 @@
+class Brackets:
+  #String to be tested and corrected
+  test_string="({<1+2-1+18)"
+  #String of corrected paranthesis
+  final_String=""
+
+  #function for checking string has balanced paranthesis or not
+  def check(my_string): 
+	  brackets = ["()","{}","[]","<>"] 
+	  while any(x in my_string for x in brackets): 
+		  for br in brackets: 
+			  my_string = my_string.replace(br, '')     
+	  return not my_string
+
+  #function for extracting paranthesis
+  def extractingparanthesis():
+    rString=""
+    for i in Brackets.test_string:
+      if(i=="{" or i=="[" or i=="(" or i=="<<" or i=="}" or i=="]" or i==">>" or i==")"):
+        rString+=i
+      #print (rString)
+    return rString
+
+  #function for adding the paranthesis to the unbalanced string  
+  def addingparanthesis():
+    closingparanthesis=""
+    nonrepeatingstring=""
+    for i in Brackets.test_string:
+      if(i=="}" or i=="]" or i==">" or i==")"):
+        continue
+      else: 
+        nonrepeatingstring+=i
+        #print(nonrepeatingstring)
+    for i in nonrepeatingstring :
+      if (i=="{"):
+        closingparanthesis+="}"
+      elif (i=="("):
+         closingparanthesis+=")"
+      elif (i=="["):     
+          closingparanthesis+="]"
+      elif (i=="<"):
+          closingparanthesis+=">"
+    final_String=nonrepeatingstring+closingparanthesis[::-1]
+    print (final_String)
+
+   
+  
+
+brac1=Brackets
+
+# Driver code 
+#brac1=Brackets("(1+2-1+19")
+removedbraces=Brackets.extractingparanthesis()
+callvariable=Brackets.check(removedbraces)
+if(callvariable==False):
+  Brackets.addingparanthesis()
+#string = "{["
+#print(string, "-", "Balanced"
+#	if Brackets.check(string) else "Unbalanced") 
+
+
