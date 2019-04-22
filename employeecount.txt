@@ -1,0 +1,85 @@
+bldg1={"depta1":5,"deptb1":5,"deptc1":5}
+bldg2={"depta2":5,"deptb2":5}
+bldg3={"depta3":5}
+bldg4={"depta4":5,"deptb4":5,"deptc4":5,"deptd4":5 }
+
+#function to move employee from one dept to another dept
+def move_emp(dept1,dept2,count):
+    for item,val in bldg1.items():
+        if item == dept1:
+            bldg1[item]-=count
+        if item == dept2:
+            bldg1[item]+=count
+    for item,val in bldg2.items():
+        if item == dept1:
+            bldg2[item] -= count
+        if item == dept2:
+            bldg2[item] += count
+    for item,val in bldg3.items():
+        if item == dept1:
+            bldg3[item] -= count
+        if item == dept2:
+            bldg3[item] += count
+    for item,val in bldg4.items():
+        if item == dept1:
+            bldg4[item] -= count
+        if item == dept2:
+            bldg4[item] += count
+
+#function to print number of employees building wise             
+def total_emp(bldg):
+
+    if bldg == "bldg1":
+        print(sum(bldg1.values()))
+
+    elif bldg == "bldg2":
+        print(sum(bldg2.values()))
+
+    elif bldg == "bldg3":
+        print(sum(bldg3.values()))
+
+    elif bldg == "bldg4":
+        print(sum(bldg4.values()))
+
+
+print("Welcome To Company A")
+print("Please enter your choice. By default all dept have 5 employees")
+
+#driver code
+while True:
+    print("1. Move Employee, 2. Count employee building wise, 3. Count employee deptwise")
+    choice = input()
+    choice = int(choice)
+    if(choice == 1):
+        print("Enter the dept from which the emp is to be moved")
+        dept1=input()
+        print("Enter the dept to which the emp is to be moved")
+        dept2 = input()
+        print("Enter the number of employees to be moved")
+        count=input()
+        count=int(count)
+        move_emp(dept1,dept2,count)
+        print("Employee moved")
+    elif (choice == 2):
+        print("Enter the building name")
+        bldg=input()
+        total_emp(bldg)
+    #code for printing employee count in each department    
+    elif(choice == 3):
+        print("Enter the dept name")
+        dept= input()
+        for item, val in bldg1.items():
+            if item == dept:
+                print(val)
+        for item, val in bldg2.items():
+            if item == dept:
+                print(val)
+        for item, val in bldg3.items():
+            if item == dept:
+                print(val)
+        for item, val in bldg4.items():
+            if item == dept:
+                print(val)
+    else:
+        print("invalid number")
+        break
